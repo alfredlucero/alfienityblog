@@ -1,8 +1,9 @@
 import React from "react";
+import Container from "../components/container";
 
 export default () => (
-  <div style={{ color: "#595959" }}>
+  <Container>
     <h1>About alfienitylucero</h1>
     <p>Frontend Software Engineer II at SendGrid</p>
-  </div>
+  </Container>
 );

@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
+import Container from "../components/container";
 
 export default () => (
-  <div style={{ color: "#595959" }}>
+  <Container>
     <h1>alfienitylucero</h1>
     <p>
       Exploring the full stack web development cosmos to alfienity and beyond~
     </p>
     <Link to="/about/">About</Link>
-  </div>
+  </Container>
 );
