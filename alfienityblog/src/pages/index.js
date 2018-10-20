@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import { css } from "react-emotion";
 import { rhythm } from "../utils/typography";
 import Layout from "../components/layout";
@@ -10,6 +11,10 @@ export default ({ data }) => {
   console.log(data);
   return (
     <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Alfienity Blog</title>
+      </Helmet>
       <div>
         <h1
           className={css`
