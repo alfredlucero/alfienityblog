@@ -34,7 +34,7 @@ const Layout = ({ children }) => (
             <h3>{data.site.siteMetadata.title}</h3>
           </Link>
           <Link to={`/about/`}>
-            <h4>About</h4>
+            <h3>About</h3>
           </Link>
         </div>
         {children}

@@ -41,5 +41,13 @@ module.exports = {
     // which gives a React component interface for you to manage your document head
     // in order to add metadata to pages like title/description for SEO
     "gatsby-plugin-react-helmet",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/components/Layout.jsx"),
+        },
+      },
+    },
   ],
 };
