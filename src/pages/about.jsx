@@ -1,17 +1,21 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
-import Container from "../components/container";
+import Container from "../components/Container";
 
-export default ({ data }) => (
+const About = ({ data }) => (
   <Container>
     <Helmet>
       <title>About {data.site.siteMetadata.title}</title>
     </Helmet>
-    <h1>About {data.site.siteMetadata.title}</h1>
-    <p>Frontend Software Engineer II at SendGrid</p>
+    <h2>About {data.site.siteMetadata.title}</h2>
+    <p>Senior Software Engineer</p>
+    <p>Anotha one</p>
+
   </Container>
 );
+
+export default About;
 
 export const query = graphql`
   query {

@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
-export default ({ data }) => {
+const MyFiles = ({ data }) => {
   console.log(data);
   return (
     <Layout>
@@ -32,6 +32,8 @@ export default ({ data }) => {
     </Layout>
   );
 };
+
+export default MyFiles;
 
 export const query = graphql`
   query {

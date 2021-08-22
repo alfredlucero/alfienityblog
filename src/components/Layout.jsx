@@ -1,10 +1,10 @@
 import React from "react";
-import { css } from "react-emotion";
+import { css } from "@emotion/react";
 import { StaticQuery, Link, graphql } from "gatsby";
 
 import { rhythm } from "../utils/typography";
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -17,7 +17,7 @@ export default ({ children }) => (
     `}
     render={data => (
       <div
-        className={css`
+        css={css`
           margin: 0 auto;
           max-width: 700px;
           padding: ${rhythm(2)};
@@ -25,7 +25,7 @@ export default ({ children }) => (
         `}
       >
         <div
-          className={css`
+          css={css`
             display: flex;
             justify-content: space-between;
           `}
@@ -42,3 +42,5 @@ export default ({ children }) => (
     )}
   />
 );
+
+export default Layout;

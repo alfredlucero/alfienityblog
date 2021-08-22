@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import { css } from "react-emotion";
+import { css } from "@emotion/react";
 import { rhythm } from "../utils/typography";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 // import { Link } from "gatsby";
 // import Container from "../components/container";
 
-export default ({ data }) => {
+const Landing = ({ data }) => {
   console.log(data);
   return (
     <Layout>
@@ -17,7 +17,7 @@ export default ({ data }) => {
       </Helmet>
       <div>
         <h1
-          className={css`
+          css={css`
             display: inline-block;
             border-bottom: 1px solid;
           `}
@@ -33,19 +33,19 @@ export default ({ data }) => {
           <div key={node.id}>
             <Link
               to={node.fields.slug}
-              className={css`
+              css={css`
                 text-decoration: none;
                 color: inherit;
               `}
             >
               <h3
-                className={css`
+                css={css`
                   margin-bottom: ${rhythm(1 / 4)};
                 `}
               >
                 {node.frontmatter.title}{" "}
                 <span
-                  className={css`
+                  css={css`
                     color: #bbb;
                   `}
                 >
@@ -61,6 +61,7 @@ export default ({ data }) => {
   );
 };
 
+export default Landing;
 // <Container>
 //   <h1>alfienitylucero</h1>
 //   <p>
