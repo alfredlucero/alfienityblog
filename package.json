@@ -1,6 +1,10 @@
 {
   "name": "alfienityblog",
   "description": "Gatsby alfienityblog",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",

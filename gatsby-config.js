@@ -15,7 +15,7 @@ module.exports = {
         background_color: "#6b37bf",
         theme_color: "#6b37bf",
         display: "minimal-ui",
-        icon: "src/images/icon.jpg",
+        icon: "src/images/juno.jpeg",
       },
     },
     // For PWAs, provides a service worker to run in the background, deciding to serve network or cached content

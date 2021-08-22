@@ -10,7 +10,7 @@ const About = ({ data }) => (
     </Helmet>
     <h2>About {data.site.siteMetadata.title}</h2>
     <p>Senior Software Engineer</p>
-    <p>Full stack web development is the way. Mostly frontend lately, but passionately researching more about backend too.</p>
+    <p>Aspiring software architect. Exploring full stack web development. Mostly frontend, but passionately researching more about backend too.</p>
   </Layout>
 );
 
