@@ -1,50 +1,23 @@
-const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  // Only the original creator of a node can directly modify the node so for all other plugins we must
-  // use this to create additional fields
+exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === "MarkdownRemark") {
-    // createFilePath handles finding the parent File node along with creating the slug
-    const slug = createFilePath({ node, getNode, basePath: "pages" });
+
+  // you only want to operate on `Mdx` nodes. If you had content from a
+  // remote CMS you could also check to see if the parent node was a
+  // `File` node here
+  if (node.internal.type === "Mdx") {
+    const value = createFilePath({ node, getNode, basePath: "pages" });
+
     createNodeField({
-      node,
+      // Name of the field you are adding
       name: "slug",
-      value: slug,
+      // Individual MDX node
+      node,
+      // Generated value based on filepath with "blog" prefix. you
+      // don't need a separating "/" before the value because
+      // createFilePath returns a path with the leading "/".
+      value: `/blog${value}`,
     });
   }
-};
-
-// In order to programmatically create pages, you must
-// query the data with GraphQL and map the query results to pages
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-  return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `).then(result => {
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: path.resolve("./src/templates/BlogPost.jsx"),
-          context: {
-            // Data passed to context is available in page queries as GraphQL variables
-            slug: node.fields.slug,
-          },
-        });
-      });
-      resolve();
-    });
-  });
 };

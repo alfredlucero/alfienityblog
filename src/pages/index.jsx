@@ -14,7 +14,7 @@ const Landing = ({ data }) => {
         <title>{data.site.siteMetadata.title} Blog</title>
       </Helmet>
       <div>
-        <h2>Hi, I'm {data.site.siteMetadata.title} aka alfienity!</h2>
+        <h1>Hi, I'm {data.site.siteMetadata.title} aka alfienity!</h1>
         <p>
           I love to explore the full stack web development cosmos to alfienity
           and beyond. Lately it's been mostly frontend but I am gradually
@@ -24,17 +24,20 @@ const Landing = ({ data }) => {
           I also love to write about the things I've built and learned. Check
           them out!
         </p>
-        <h4>{data.allMarkdownRemark.totalCount} Personal Blog Posts</h4>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        <h3>
+          {data.allMdx.totalCount} Personal Blog Post
+          {data.allMdx.totalCount > 1 ? "s" : ""}
+        </h3>
+        {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
             <Link
-              to={node.fields.slug}
+              to={node.frontmatter.path}
               css={css`
                 text-decoration: none;
                 color: inherit;
               `}
             >
-              <h3
+              <h4
                 css={css`
                   margin-bottom: ${rhythm(1 / 4)};
                 `}
@@ -42,12 +45,14 @@ const Landing = ({ data }) => {
                 {node.frontmatter.title}{" "}
                 <span
                   css={css`
-                    color: #bbb;
+                    opacity: 0.75;
+                    font-size: 1rem;
                   `}
                 >
-                  — {node.frontmatter.date}
+                  — {node.frontmatter.date} ({node.timeToRead} min
+                  {node.timeToRead > 1 ? "s" : ""} read)
                 </span>
-              </h3>
+              </h4>
               <p>{node.excerpt}</p>
             </Link>
           </div>
@@ -66,21 +71,20 @@ export const query = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      totalCount
+    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {
-          id
           frontmatter {
             title
-            date(formatString: "DD MMMM, YYYY")
-          }
-          fields {
-            slug
+            path
+            date(formatString: "MMMM DD, YYYY")
           }
           excerpt
+          timeToRead
+          id
         }
       }
+      totalCount
     }
   }
 `;

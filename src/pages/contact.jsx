@@ -10,6 +10,7 @@ const Contact = ({ data }) => (
     </Helmet>
     <h2>Contact {data.site.siteMetadata.title}</h2>
     <ul>
+      <li>Github github.com/alfredlucero</li>
       <li>LinkedIn linkedin.com/in/alfredlucero</li>
     </ul>
   </Layout>
