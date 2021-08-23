@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "alfienitylucero",
+    title: "Alfred Lucero",
   },
   plugins: [
     // For PWAs, this provides a web app manifest JSON file that tells browser about web app
@@ -9,8 +9,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "alfienityblog",
-        short_name: "alfienity",
+        name: "alfredlucero.dev",
+        short_name: "alfredlucero",
         start_url: "/",
         background_color: "#6b37bf",
         theme_color: "#6b37bf",

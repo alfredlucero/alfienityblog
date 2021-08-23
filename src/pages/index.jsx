@@ -4,8 +4,6 @@ import { Helmet } from "react-helmet";
 import { css } from "@emotion/react";
 import { rhythm } from "../utils/typography";
 import Layout from "../components/Layout";
-// import { Link } from "gatsby";
-// import Container from "../components/container";
 
 const Landing = ({ data }) => {
   console.log(data);
@@ -13,22 +11,20 @@ const Landing = ({ data }) => {
     <Layout>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Alfienity Blog</title>
+        <title>{data.site.siteMetadata.title} Blog</title>
       </Helmet>
       <div>
-        <h1
-          css={css`
-            display: inline-block;
-            border-bottom: 1px solid;
-          `}
-        >
-          alfienity
-        </h1>
+        <h2>Hi, I'm {data.site.siteMetadata.title} aka alfienity!</h2>
         <p>
-          Exploring the full stack web development cosmos to alfienity and
-          beyond.
+          I love to explore the full stack web development cosmos to alfienity
+          and beyond. Lately it's been mostly frontend but I am gradually
+          leveling up my backend and software architecture skills too.
         </p>
-        <h4>{data.allMarkdownRemark.totalCount} Blog Posts</h4>
+        <p>
+          I also love to write about the things I've built and learned. Check
+          them out!
+        </p>
+        <h4>{data.allMarkdownRemark.totalCount} Personal Blog Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
             <Link
@@ -62,16 +58,14 @@ const Landing = ({ data }) => {
 };
 
 export default Landing;
-// <Container>
-//   <h1>alfienitylucero</h1>
-//   <p>
-//     Exploring the full stack web development cosmos to alfienity and beyond~
-//   </p>
-//   <Link to="/about/">About</Link>
-// </Container>
 
 export const query = graphql`
   query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
